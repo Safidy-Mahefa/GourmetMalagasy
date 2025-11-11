@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Gourmet Malagasy - Restaurant Traditionnel à Antananarivo, Madagascar</title>
+    <meta name="description" content="Découvrez Le Gourmet Malagasy, restaurant de cuisine traditionnelle malgache à Antananarivo. Savourez des plats authentiques comme le romazava, ravitoto et zebu dans une ambiance chaleureuse.">
+    <meta property="og:title" content="Le Gourmet Malagasy - Cuisine Traditionnelle Malgache">
+    <meta property="og:description" content="Restaurant authentique à Antananarivo proposant les meilleurs plats traditionnels de Madagascar dans une ambiance élégante et chaleureuse.">
+    <meta property="og:type" content="restaurant">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles personnalisés -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Sticky -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="./images/Restaurant_logo_design_1fb985c5.png" alt="Logo Le Gourmet Malagasy" class="nav-logo">
+                <span class="nav-title">Le Gourmet Malagasy</span>
+            </div>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#accueil" class="nav-link">Accueil</a>
+                <a href="#menu" class="nav-link">Menu</a>
+                <a href="#reservation" class="nav-link">Réservation</a>
+                <a href="#avis" class="nav-link">Avis</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <button class="btn btn-primary" onclick="scrollToSection('reservation')">Réserver</button>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Section Accueil / Hero -->
+    <section id="accueil" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Le Gourmet Malagasy</h1>
+            <p class="hero-subtitle">Découvrez l'authenticité de la cuisine malgache</p>
+            <p class="hero-description">Au cœur d'Antananarivo, notre restaurant vous invite à un voyage culinaire unique. Depuis 1995, nous célébrons les saveurs traditionnelles de Madagascar avec passion et authenticité.</p>
+            <button class="btn btn-accent btn-large" onclick="scrollToSection('reservation')">
+                Réserver Maintenant
+            </button>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToSection('menu')">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Carousel des Plats Populaires -->
+    <section class="popular-dishes">
+        <div class="container">
+            <h2 class="section-title">Nos Plats Populaires</h2>
+            <p class="section-subtitle">Découvrez nos spécialités les plus appréciées</p>
+            
+            <div class="carousel-container">
+                <button class="carousel-btn carousel-prev" id="carouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="popularCarousel">
+                        <!-- Les slides seront insérés par JavaScript -->
+                    </div>
+                </div>
+                
+                <button class="carousel-btn carousel-next" id="carouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- Section Menu -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Notre Menu</h2>
+            <p class="section-subtitle">Explorez notre sélection de plats traditionnels malgaches</p>
+            
+            <!-- Onglets de catégories -->
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-category="entrees">Entrées</button>
+                <button class="menu-tab" data-category="plats">Plats Principaux</button>
+                <button class="menu-tab" data-category="desserts">Desserts</button>
+                <button class="menu-tab" data-category="boissons">Boissons</button>
+            </div>
+            
+            <!-- Grille de plats -->
+            <div class="menu-grid" id="menuGrid">
+                <!-- Les plats seront insérés par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Réservation -->
+    <section id="reservation" class="reservation-section">
+        <div class="container">
+            <div class="reservation-grid">
+                <div class="reservation-form-container">
+                    <h2 class="section-title">Réservez Votre Table</h2>
+                    <p class="section-subtitle">Garantissez votre place pour une expérience culinaire inoubliable</p>
+                    
+                    <form id="reservationForm" class="reservation-form">
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Téléphone *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Date *</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="time">Heure *</label>
+                                <input type="time" id="time" name="time" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests">Nombre de personnes *</label>
+                            <select id="guests" name="guests" required>
+                                <option value="">Sélectionnez...</option>
+                                <option value="1">1 personne</option>
+                                <option value="2">2 personnes</option>
+                                <option value="3">3 personnes</option>
+                                <option value="4">4 personnes</option>
+                                <option value="5">5 personnes</option>
+                                <option value="6">6 personnes</option>
+                                <option value="7">7 personnes</option>
+                                <option value="8">8 personnes</option>
+                                <option value="9+">9 personnes ou plus</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-accent btn-large btn-full">
+                            Confirmer la Réservation
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="reservation-info">
+                    <img src="./images/Restaurant_interior_dining_room_6303f015.png" alt="Intérieur du restaurant" class="reservation-image">
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-clock"></i> Horaires d'ouverture</h3>
+                        <div class="info-content">
+                            <p><strong>Lundi - Vendredi:</strong> 11h30 - 14h30 & 18h00 - 22h30</p>
+                            <p><strong>Samedi - Dimanche:</strong> 11h00 - 23h00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-info-circle"></i> Informations importantes</h3>
+                        <div class="info-content">
+                            <p>• Réservation recommandée le week-end</p>
+                            <p>• Groupes de plus de 8 personnes : contactez-nous</p>
+                            <p>• Annulation gratuite jusqu'à 24h avant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Avis Clients -->
+    <section id="avis" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Ce Que Disent Nos Clients</h2>
+            <p class="section-subtitle">Leurs expériences au Gourmet Malagasy</p>
+            
+            <div class="testimonials-carousel">
+                <button class="carousel-btn carousel-prev" id="testimonialsCarouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="testimonials-track-container">
+                    <div class="testimonials-track" id="testimonialsCarousel">
+                        <!-- Les témoignages seront insérés par JavaScript -->
+                    </div>
+                </div>
+                
+                <button class="carousel-btn carousel-next" id="testimonialsCarouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel-dots" id="testimonialsDots"></div>
+        </div>
+    </section>
+
+    <!-- Section Contact et Localisation -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contactez-Nous</h2>
+            <p class="section-subtitle">Nous sommes à votre écoute</p>
+            
+            <div class="contact-grid">
+                <!-- Carte Google Maps -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.3842774584906!2d47.51647931490091!3d-18.91368598716334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07e7d3a6b7b5f%3A0x9b5d5f9b8f8e8d9a!2sAntananarivo%2C%20Madagascar!5e0!3m2!1sfr!2sfr!4v1234567890123!5m2!1sfr!2sfr"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                
+                <!-- Informations de contact et formulaire -->
+                <div class="contact-info-container">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>Avenue de l'Indépendance<br>Antananarivo 101, Madagascar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>+261 20 22 123 45</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@legourmetmalagasy.mg</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <h3>Envoyez-nous un message</h3>
+                        
+                        <div class="form-group">
+                            <label for="contact-name">Nom *</label>
+                            <input type="text" id="contact-name" name="contact-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" name="contact-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Envoyer le Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer avec Réseaux Sociaux -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="./images/Restaurant_logo_design_1fb985c5.png" alt="Logo" class="footer-logo">
+                    <h3>Le Gourmet Malagasy</h3>
+                    <p>Découvrez l'authenticité de la cuisine malgache au cœur d'Antananarivo depuis 1995.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reservation">Réservation</a></li>
+                        <li><a href="#avis">Avis</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Horaires</h4>
+                    <p><strong>Lun - Ven:</strong> 11h30 - 22h30</p>
+                    <p><strong>Sam - Dim:</strong> 11h00 - 23h00</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Suivez-Nous</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" class="social-link" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Le Gourmet Malagasy. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Confirmation -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 id="modalTitle">Réservation Confirmée !</h3>
+            <p id="modalMessage">Merci ! Nous avons bien reçu votre réservation. Un email de confirmation vous a été envoyé.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Fermer</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
